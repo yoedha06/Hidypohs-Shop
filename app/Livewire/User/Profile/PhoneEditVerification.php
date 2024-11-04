@@ -38,7 +38,7 @@ class PhoneEditVerification extends Component
         CodeOtp::where('phone', $phone)->delete();
 
         session()->flash('success', 'Phone number verified successfully');
-        $this->redirectRoute('profile.user',navigate:true);
+        return redirect()->to('/profile/user');
     }
 
     public function resendOtp()

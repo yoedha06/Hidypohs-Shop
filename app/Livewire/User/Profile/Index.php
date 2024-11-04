@@ -6,6 +6,7 @@ use App\Models\CodeOtp;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -23,7 +24,10 @@ class Index extends Component
     #[Title('Profile')]
     #[Layout('components.layouts.user-page')]
 
-    public $name, $address, $phone, $image, $gateway, $apiToken;
+    public $name, $address, $phone, $image, $gateway, $apiToken, $currentPassword, $newPassword;
+
+    public $typeCurrent = 'password';
+    public $typeNew = 'password';
 
     public function render()
     {
@@ -134,6 +138,48 @@ class Index extends Component
             $this->redirect('/profile/user', navigate:true);
         } else {
             session()->flash('error', 'Tidak ada foto untuk dihapus.');
+        }
+    }
+
+    public function changePassword()
+    {
+        $this->validate([
+            'currentPassword' => 'required',
+            'newPassword' => 'required|min:8'
+        ]);
+
+        try {
+        if (!Hash::check($this->currentPassword, $this->data->password)) {
+            session()->flash('errorChange', 'Current password is incorrect.');
+            return;
+        }
+
+        User::find($this->data->id)->update([
+            'password' => Hash::make($this->newPassword),
+        ]); 
+        session()->flash('successChange', 'Password changed successfully.');
+        $this->reset(['currentPassword', 'newPassword']);
+        }  catch (\Exception $e) {
+            logger($e->getMessage());
+            session()->flash('errorChange', $e->getMessage());
+        }
+    }
+
+    public function toogleCurrentPassword()
+    {
+        if($this->typeCurrent === 'password') {
+            $this->typeCurrent = 'text';
+        } else {
+            $this->typeCurrent = 'password';
+        }
+    }
+
+    public function toogleNewPassword()
+    {
+        if($this->typeNew === 'password') {
+            $this->typeNew = 'text';
+        } else {
+            $this->typeNew = 'password';
         }
     }
 }
