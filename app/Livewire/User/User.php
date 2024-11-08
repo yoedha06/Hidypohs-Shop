@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -13,6 +14,9 @@ class User extends Component
     
     public function render()
     {
-        return view('livewire.user.user');
+        $products = Product::with('brands')->get();
+        return view('livewire.user.user',[
+            'products' => $products
+        ]);
     }
 }

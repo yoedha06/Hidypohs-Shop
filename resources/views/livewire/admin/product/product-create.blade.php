@@ -98,6 +98,26 @@
                     </div>
                     <div class="mb-3">
                         <label for="small-input"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender <span
+                                class="text-red-600">*</span></label>
+                        
+                            <div class="flex">
+                                <div class="flex items-center me-4">
+                                    <input id="inline-radio" type="radio" wire:model="gender" value="male" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+                                </div>
+                                <div class="flex items-center me-4">
+                                    <input id="inline-2-radio" type="radio" wire:model="gender" value="female" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-2-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
+                                </div>
+                                <div class="flex items-center me-4">
+                                    <input checked id="inline-checked-radio" type="radio" wire:model="gender" value="unisex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-checked-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Unisex</label>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="small-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock <span
                                 class="text-red-600">*</span></label>
                         <input wire:model="stock" type="number" id="small-input"

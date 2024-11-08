@@ -65,7 +65,7 @@
                     </button>
                 </div>
             @endif
-            <a wire:navigate href="/">
+            <a href="/">
                 <img src="{{ asset('assets/img/aa.png') }}" alt="Image" class="mb-6 h-10">
             </a>
             <div class="max-w-md w-full">

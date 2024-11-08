@@ -1,7 +1,7 @@
 <div>
     <div class="p-4 mt-16 sm:ml-64">
         <div class="mb-8 grid gap-5 sm:grid-cols-2 sm:justify-items-stretch md:mb-12 md:grid-cols-5 lg:mb-16 lg:gap-6">
-         @foreach($products as $product)
+         @foreach($menProducts as $product)
             <div class="flex flex-col gap-4 p-4 bg-white rounded-lg shadow-md h-full hover:shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105">
                   <a href="#" class="flex flex-col gap-4 h-full">
                      <img src="{{ Storage::url($product->image) }}" alt="" class="h-72 rounded-lg object-cover" />

@@ -16,6 +16,6 @@ class ModalLogout extends Component
     public function logout()
     {
         Auth::logout();
-        $this->redirect('/', navigate:true);
+        return $this->redirect('/');
     }
 }

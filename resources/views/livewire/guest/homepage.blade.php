@@ -1,13 +1,58 @@
 <div>
     <!-- Container -->
     <div class="mx-auto w-full max-w-7xl px-5 py-20 md:px-10 md:py-20">
-        
         <div class="flex flex-col items-center">
-            <h2 class="text-center text-3xl font-bold md:text-5xl mt-10"> The Latest and Best Clothes </h2>
-            <p class="mb-8 mt-4 text-center text-red-500 text-smsm:text-base md:mb-12 lg:mb-16">
+            <h2 class="text-center text-3xl font-bold md:text-5xl mt-2"> The Latest and Best Clothes </h2>
+            <p class="mt-4 mb-5 text-center text-red-500 text-smsm:text-base">
                 Buy Now to get <span class="font-bold">50%</span> discount</p>
-            <!-- Content -->
+        </div>
+        @if($products->count() > 1)
+            <div class="swiper">
+                <div class="swiper-wrapper mb-10">
+                    @foreach($products as $product)
+                        <div class="swiper-slide pl-1 pr-1">
+                            <div class="flex flex-col gap-4 p-4 bg-white rounded-lg shadow-md h-full hover:shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105">
+                                <a href="#" class="flex flex-col gap-4 h-full">
+                                    <img src="{{ Storage::url($product->image) }}" alt="" class="h-72 rounded-lg object-cover" />
+                                    <div class="flex flex-col h-full">
+                                        <div class="flex justify-between mb-4 gap-2">
+                                            <div class="w-auto rounded-md px-2 py-1.5">
+                                                <p class="text-sm font-semibold text-gray-600 underline">{{ $product->brands->brand_name }}</p>
+                                            </div>
+                                            <div class="rounded-md bg-gradient-to-r from-violet-700 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 px-2 py-1.5">
+                                                <p class="text-sm font-semibold text-white">Rp.{{ $product->price }}</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-lg font-bold">{{ $product->product_name }}</p>
+                                        <p class="text-md line-clamp-3 mt-2">{{ $product->description }}</p>
+                                    </div>
+                                </a>
+                                <button class="w-full rounded-lg bg-gray-50 px-2 py-1.5 text-gray-500 shadow-md hover:text-red-700 hover:bg-gray-100 font-semibold">Buy Now</button>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <script>
+                const swiper = new Swiper('.swiper', {
+                    slidesPerView: 5, // Menampilkan 5 produk per tampilan
+                    spaceBetween: 10, // Jarak antar produk
+                    loop: true,
+                    autoplay: {
+                        delay: 3000, // Slide otomatis setiap 5 detik
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                });
+            </script>
+        @else 
             <div class="mb-8 grid gap-5 sm:grid-cols-2 sm:justify-items-stretch md:mb-12 md:grid-cols-5 lg:mb-16 lg:gap-6">
+            
                 <!-- Item -->
                 <a href="#" class="flex flex-col gap-4 px-4 py-8 md:p-0">
                     <img src="{{ asset('assets/img/jaket1.jpg') }}" alt="" class="h-60 rounded-lg object-cover" />
@@ -147,8 +192,10 @@
                     </div>
                 </a>
             </div>
-            <!-- Button -->
-            <a href="#" class="rounded-md bg-black hover:bg-red-700 px-6 py-3 text-center font-semibold text-white"> View More
+        @endif
+        <!-- Button -->
+        <div class="flex justify-center mt-10">
+            <a href="{{ route('login') }}" wire:navigate class="rounded-md bg-black hover:bg-red-700 px-6 py-3 text-center font-semibold text-white"> View More
             </a>
         </div>
     </div>

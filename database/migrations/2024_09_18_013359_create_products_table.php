@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->foreignId('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->string('image')->nullable();
+            $table->enum('gender', ['male', 'female', 'unisex']);
             $table->text('description');
             $table->BigInteger('stock');
             $table->BigInteger('price');

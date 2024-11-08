@@ -115,6 +115,9 @@
                             <th scope="col" class="px-2 py-3">
                                 Description
                             </th>
+                            <th scope="col" class="px-2 py-3">
+                                Gender
+                            </th>
                             <th scope="col" class="px-6 py-3">
                                 Stock
                             </th>
@@ -147,6 +150,9 @@
                                     </td>
                                     <td class="px-2 py-4" style="max-width: 200px">
                                         {{ $product->description }}
+                                    </td>
+                                    <td class="px-2 py-4">
+                                        {{ $product->gender }}
                                     </td>
                                     <td class="px-9 py-4">
                                         {{$product->stock}}

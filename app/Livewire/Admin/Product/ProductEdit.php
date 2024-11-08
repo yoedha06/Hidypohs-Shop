@@ -32,6 +32,9 @@ class ProductEdit extends Component
     #[Validate('required|max:200',message:'The description must be less than 200 characters')]
     public $description;
 
+    #[Validate('required')]
+    public $gender;
+
     #[Validate('required|numeric|min:1',message:'The stock must be a number')]
     public $stock;
     
@@ -47,6 +50,7 @@ class ProductEdit extends Component
         $this->product_name = $this->product->product_name;
         $this->brand_id = $this->product->brand_id;
         $this->description = $this->product->description;
+        $this->gender = $this->product->gender;
         $this->stock = $this->product->stock;
         $this->price = $this->product->price;
         $this->order_date = $this->product->order_date;
@@ -64,6 +68,7 @@ class ProductEdit extends Component
             'product_name' => $this->product_name,
             'brand_id' => $this->brand_id,
             'description' => $this->description,
+            'gender' => $this->gender,
             'stock' => $this->stock,
             'price' => $this->price,
             'order_date' => $this->order_date

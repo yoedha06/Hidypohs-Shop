@@ -30,6 +30,9 @@ class ProductCreate extends Component
     #[Validate('required')]
     public $description;
 
+    #[Validate('required')]
+    public $gender;
+
     #[Validate('required|numeric|min:1',message:'The stock must be a number')]
     public $stock;
     
@@ -49,6 +52,7 @@ class ProductCreate extends Component
     public function create()
     {
         $validated = $this->validate();
+        
         if($this->image){
             $validated['image'] = $this->image->store('products','public');
         }

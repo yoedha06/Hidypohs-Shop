@@ -16,6 +16,26 @@ class NewPassword extends Component
     #[Layout('components.layouts.auth')]
 
     public $newPassword, $confirmPassword;
+    public $type = 'password';
+    public $typeNew = 'password';
+
+    public function tooglePassword()
+    {
+        if($this->type === "password") {
+            $this->type = "text";
+        } else {
+            $this->type = "password";
+        }
+    }
+
+    public function tooglePasswordNew()
+    {
+        if($this->typeNew === "password"){
+            $this->typeNew = "text";
+        } else {
+            $this->typeNew = "password";
+        }
+    }
 
     public function updateNewPassword()
     {

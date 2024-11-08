@@ -40,8 +40,8 @@ class Login extends Component
                 return $this->redirect('/user', navigate: true);
             }
         } else {
-            session()->flash('error', 'Failed, Please try again');
-            return $this->redirect('/login', navigate: true);
+            session()->flash('error', 'Login failed. Please check and try again.');
+            return redirect()->back()->withInput();
         }
     }
 
